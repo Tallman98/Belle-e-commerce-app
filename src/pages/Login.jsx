@@ -4,10 +4,10 @@ import Input from "../components/Input";
 
 const Login = () => {
   return (
-    <section className="md:mt-16 md:mb-[100px] ">
+    <section className="md:mt-16 md:mb-[100px] mb-5">
       <Header text="LOGIN" />
       <div className="max-w-xl mx-auto">
-        <form className="mt-12">
+        <form className="mt-12 px-5">
           <Input text="Email" />
           <Input text="Password" />
           <div className="text-center my-5">

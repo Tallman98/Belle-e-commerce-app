@@ -98,6 +98,12 @@ const cartSlice = createSlice({
         }
       });
     },
+
+    addToCart: (state, action) => {
+      action.payload.quantity = 1;
+      action.payload.total = action.payload.price;
+      state.cartItems.push(action.payload);
+    },
   },
 });
 
@@ -110,4 +116,5 @@ export const {
   increaseQty,
   decreaseQty,
   removeCartItem,
+  addToCart,
 } = cartSlice.actions;

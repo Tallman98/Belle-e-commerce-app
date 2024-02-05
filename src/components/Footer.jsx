@@ -8,15 +8,24 @@ import vimeo from "../assets/socials/vimeo.svg";
 import location from "../assets/socials/location.svg";
 import phone from "../assets/socials/phone.svg";
 import mail from "../assets/socials/mail.svg";
+import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
+import { footerLinks } from "../constants";
+import { useState } from "react";
 
 const Footer = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = (id) => {
+    console.log("You opened option" + id);
+    setIsOpen(!isOpen);
+  };
   return (
     <footer className=" w-full">
       <div className="bg-[#2d2d2d16] py-5 border">
-        <div className="max-w-[1200px] mx-auto flex justify-between items-center">
-          <div className="flex gap-8 w-[60%]">
-            <h2 className="text-sm">
-              SIGN UP FOR <br />{" "}
+        <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row justify-between items-center">
+          <div className="flex flex-col md:flex-row gap-8 w-full px-4 lg:px-0 lg:w-[60%]">
+            <h2 className="text-sm text-center">
+              SIGN UP FOR <br className="hidden" />{" "}
               <span className="text-xl font-semibold">NEWSLETTER</span>
             </h2>
 
@@ -30,7 +39,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex gap-5">
+          <div className="flex gap-5 mt-7">
             <div className="w-[20px]">
               <img src={facebook} alt="facebook" />
             </div>
@@ -52,40 +61,34 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="bg-black text-white py-10">
+      <div className="bg-black text-white py-10 px-5">
         <div className="flex flex-col md:flex-row max-w-[1200px] mx-auto justify-between">
-          <div className="flex flex-col ">
-            <p className="mb-2 font-[600] text-lg">Quick Shop</p>
-            <ul className="text-sm font-[200] flex flex-col gap-2">
-              <li>Women</li>
-              <li>Men</li>
-              <li>Kids</li>
-              <li>Sportswear</li>
-              <li>Sale</li>
-            </ul>
-          </div>
-
-          <div className="flex flex-col">
-            <p className="mb-2 font-[600] text-lg">Information</p>
-            <ul className="text-sm font-[200] flex flex-col gap-2">
-              <li>About us</li>
-              <li>Careers</li>
-              <li>Privacy policy</li>
-              <li>Terms & conditions</li>
-              <li>My Account</li>
-            </ul>
-          </div>
-
-          <div className="flex flex-col">
-            <p className="mb-2 font-[600] text-lg">Customer Services</p>
-            <ul className="text-sm font-[200] flex flex-col gap-2">
-              <li>Request Personal Data</li>
-              <li>FAQ's</li>
-              <li>Contact Us</li>
-              <li>Orders and Returns</li>
-              <li>Support Center</li>
-            </ul>
-          </div>
+          {footerLinks.map((links, i) => (
+            <div className="flex flex-col" key={i}>
+              <div className="flex justify-between border-b border-[#f4f4f482] md:border-none">
+                <p className="mb-2 font-[600] text-lg">{links.title}</p>
+                <div className="md:hidden">
+                  <ExpandMoreOutlinedIcon
+                    fontSize="small"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleClick(i);
+                    }}
+                  />
+                </div>
+              </div>
+              <ul className="text-sm font-[200] flex flex-col gap-2 my-3">
+                {links.links.map((link, i) => (
+                  <li
+                    key={i}
+                    className={`${!isOpen ? "hidden" : "block"} md:block`}
+                  >
+                    {link}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
           <div className="flex flex-col">
             <p className="mb-2 font-[600] text-lg">Contact Us</p>

@@ -7,7 +7,7 @@ const CreateAccount = () => {
     <section className="md:mt-16 md:mb-[100px] ">
       <Header text="CREATE AN ACCOUNT" />
       <div className="max-w-xl mx-auto">
-        <form className="mt-12">
+        <form className="mt-12 px-5">
           <Input text="First Name" />
           <Input text="Last Name" />
           <Input text="Email" />

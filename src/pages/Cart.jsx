@@ -13,7 +13,7 @@ const Cart = () => {
   return (
     <section className="my-16">
       <Header text="YOUR CART" />
-      <div className="flex flex-col md:flex-row max-w-[1150px] mx-auto gap-7">
+      <div className="flex flex-col md:flex-row max-w-[1150px] mx-auto gap-7 md:mt-16 px-4">
         <div className="md:w-2/3 px-2">
           <div className="bg-[#2d2d2d16] w-full md:grid grid-cols-6 py-1 text-[13px] hidden border">
             <div></div>

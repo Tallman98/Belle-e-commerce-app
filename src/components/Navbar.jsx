@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className=" bg-black text-white flex justify-between text-[12px] py-2 px-10">
+      <div className=" bg-black text-white flex justify-between text-[12px] py-2  px-5 md:px-10">
         <div className="flex gap-2">
           <div className="flex items-end">
             <p>USD</p>
@@ -57,7 +57,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <nav className="flex-grow flex justify-between px-8 mt-3 items-center bg-transparent mb-1 md:absolute z-[50] w-full sticky">
+      <nav className="flex-grow flex justify-between px-4 lg:px-8 mt-3 items-center bg-transparent mb-1 md:absolute z-[50] w-full sticky">
         <div className="block md:hidden">
           <MenuIcon />
         </div>
@@ -68,7 +68,7 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <ul className="flex gap-10 font-semibold">
             <li className="hover:text-[#17a2b8]">HOME</li>
             <li className="hover:text-[#17a2b8]">SHOP</li>
@@ -80,7 +80,9 @@ const Navbar = () => {
         </div>
 
         <div className="flex gap-2">
-          <SearchIcon fontSize="large" />
+          <div className="hidden md:block">
+            <SearchIcon fontSize="large" />
+          </div>
           <div className="block">
             <div className="relative z-10">
               <ShoppingBagOutlinedIcon
