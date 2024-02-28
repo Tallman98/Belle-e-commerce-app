@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "./Button";
 import CardModalItem from "./CardModalItem";
@@ -11,7 +12,9 @@ const CartModal = () => {
 
   return (
     <aside
-      className={`bg-white text-black p-3 mt-12 ${!cart.isOpen && "hidden"} `}
+      className={`bg-white text-black p-3 mt-12 ${
+        !cart.isOpen && "hidden"
+      } shadow-2xl`}
     >
       {items.map((item) => (
         <CardModalItem {...item} key={item.id} />

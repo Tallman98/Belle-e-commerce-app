@@ -74,10 +74,11 @@ const cartSlice = createSlice({
     },
 
     increaseQty: (state, action) => {
+      const itemId = action.payload;
       let newPrice;
 
-      state.cartItems.forEach((item) => {
-        if (item.id === action.payload) {
+      state.cartItems.map((item) => {
+        if (item.id === itemId) {
           item.quantity++;
           newPrice = item.price * item.quantity;
           item.total = newPrice;
@@ -87,10 +88,11 @@ const cartSlice = createSlice({
     },
 
     decreaseQty: (state, action) => {
+      const itemId = action.payload;
       let newPrice;
 
       state.cartItems.forEach((item) => {
-        if (item.id === action.payload) {
+        if (item.id === itemId) {
           item.quantity--;
           newPrice = item.price * item.quantity;
           item.total = newPrice;

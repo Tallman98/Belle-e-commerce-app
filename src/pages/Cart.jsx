@@ -1,5 +1,5 @@
 import CartItem from "../components/CartItem";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Header from "../components/Header";
 import paypal from "../assets/paypal.svg";
 import visa from "../assets/visa.svg";
@@ -15,9 +15,9 @@ const Cart = () => {
       <Header text="YOUR CART" />
       <div className="flex flex-col md:flex-row max-w-[1150px] mx-auto gap-7 md:mt-16 px-4">
         <div className="md:w-2/3 px-2">
-          <div className="bg-[#2d2d2d16] w-full md:grid grid-cols-6 py-1 text-[13px] hidden border">
+          <div className="bg-[#2d2d2d16] w-full md:grid grid-cols-7 py-1 text-[13px] hidden border">
             <div></div>
-            <div>PRODUCT</div>
+            <div className="col-span-2 pl-4">PRODUCT</div>
             <div>PRICE</div>
             <div>QUANTITY</div>
             <div>TOTAL</div>
@@ -39,19 +39,22 @@ const Cart = () => {
           <div className="flex flex-col gap-2 md:flex-row justify-between w-full">
             <div>
               <p className="text-xs mb-2">Country</p>
-              <select className="w-[230px] border py-2 px-1 ">
+              <select className="md:w-[230px] border py-2 px-1 w-full ">
                 <option value="">Nigeria</option>
               </select>
             </div>
             <div>
               <p className="text-xs mb-2">State</p>
-              <select className="w-[230px] border py-2 px-1 ">
+              <select className="md:w-[230px] border py-2 px-1 w-full">
                 <option value="">Lagos</option>
               </select>
             </div>
             <div>
               <p className="text-xs mb-2">Postal/Zip Code</p>
-              <input type="text" className="w-[230px] border py-[6px] px-1 " />
+              <input
+                type="text"
+                className="md:w-[230px] border py-[6px] px-1 w-full "
+              />
             </div>
           </div>
           <div className="mt-4 text-center">
@@ -61,7 +64,7 @@ const Cart = () => {
           </div>
         </div>
 
-        <div className="w-1/3">
+        <div className="md:w-1/3">
           <div className="border p-4 mb-4 text-[13px]">
             <p className="mb-1">ADD A NOTE TO YOUR ORDER</p>
             <textarea rows="9" className="border w-full" />

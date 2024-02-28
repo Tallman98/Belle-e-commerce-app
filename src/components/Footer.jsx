@@ -9,16 +9,12 @@ import location from "../assets/socials/location.svg";
 import phone from "../assets/socials/phone.svg";
 import mail from "../assets/socials/mail.svg";
 import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
+import ExpandLessOutlinedIcon from "@mui/icons-material/ExpandLessOutlined";
 import { footerLinks } from "../constants";
 import { useState } from "react";
 
 const Footer = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleClick = (id) => {
-    console.log("You opened option" + id);
-    setIsOpen(!isOpen);
-  };
+  const [isLinkOpen, setIsLinkOpen] = useState(true);
   return (
     <footer className=" w-full">
       <div className="bg-[#2d2d2d16] py-5 border">
@@ -26,7 +22,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row gap-8 w-full px-4 lg:px-0 lg:w-[60%]">
             <h2 className="text-sm text-center">
               SIGN UP FOR <br className="hidden" />{" "}
-              <span className="text-xl font-semibold">NEWSLETTER</span>
+              <span className="text-xl font-[500]">NEWSLETTER</span>
             </h2>
 
             <div className="flex w-full">
@@ -63,32 +59,41 @@ const Footer = () => {
       </div>
       <div className="bg-black text-white py-10 px-5">
         <div className="flex flex-col md:flex-row max-w-[1200px] mx-auto justify-between">
-          {footerLinks.map((links, i) => (
-            <div className="flex flex-col" key={i}>
-              <div className="flex justify-between border-b border-[#f4f4f482] md:border-none">
-                <p className="mb-2 font-[600] text-lg">{links.title}</p>
-                <div className="md:hidden">
-                  <ExpandMoreOutlinedIcon
-                    fontSize="small"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleClick(i);
-                    }}
-                  />
+          {footerLinks.map((links, i) => {
+            return (
+              <div className="flex flex-col" key={i}>
+                <div
+                  className="flex justify-between border-b border-[#f4f4f482] md:border-none"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    links.isOpen = isLinkOpen;
+                    setIsLinkOpen(!isLinkOpen);
+                  }}
+                >
+                  <p className="mb-2 font-[600] text-lg">{links.title}</p>
+                  <div className="md:hidden">
+                    {!links.isOpen ? (
+                      <ExpandMoreOutlinedIcon fontSize="small" />
+                    ) : (
+                      <ExpandLessOutlinedIcon fontSize="small" />
+                    )}
+                  </div>
                 </div>
+                <ul className="text-sm font-[200] flex flex-col gap-2 my-3">
+                  {links.links.map((link, i) => (
+                    <li
+                      key={i}
+                      className={`${
+                        !links.isOpen ? "hidden" : "block"
+                      } md:block`}
+                    >
+                      {link}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="text-sm font-[200] flex flex-col gap-2 my-3">
-                {links.links.map((link, i) => (
-                  <li
-                    key={i}
-                    className={`${!isOpen ? "hidden" : "block"} md:block`}
-                  >
-                    {link}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+            );
+          })}
 
           <div className="flex flex-col">
             <p className="mb-2 font-[600] text-lg">Contact Us</p>

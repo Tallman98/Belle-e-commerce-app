@@ -9,11 +9,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { toggleModal } from "../features/cartSlice";
 import CartModal from "./CartModal";
 import { Link } from "react-router-dom";
+import CloseIcon from "@mui/icons-material/Close";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const { amount } = useSelector((store) => store.cart);
-
   const dispatch = useDispatch();
+
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <>
@@ -57,10 +63,49 @@ const Navbar = () => {
         </div>
       </div>
 
-      <nav className="flex-grow flex justify-between px-4 lg:px-8 mt-3 items-center bg-transparent mb-1 md:absolute z-[50] w-full sticky">
+      <nav
+        className={`flex-grow flex justify-between px-4 lg:px-8 mt-3 items-center bg-transparent mb-1 md:absolute z-[50] w-full `}
+      >
         <div className="block md:hidden">
-          <MenuIcon />
+          <MenuIcon onClick={handleClick} />
         </div>
+
+        {isOpen && (
+          <div className="md:hidden absolute top-[-10px] left-0 h-screen bg-white w-[270px] z-10 shadow-xl text-sm font-[300]">
+            <div className="bg-[#2d2d2d16]">
+              <div
+                className="flex justify-between items-center py-2 px-2"
+                onClick={handleClick}
+              >
+                <p>Close Menu</p>
+                <CloseIcon fontSize="small" />
+              </div>
+            </div>
+            <div className="flex justify-between items-center py-2 px-2 border-b">
+              <p>HOME</p>
+              <p className="text-xl">+</p>
+            </div>
+            <div className="flex justify-between items-center py-2 px-2 border-b">
+              <p>SHOP</p>
+              <p className="text-xl">+</p>
+            </div>
+            <div className="flex justify-between items-center py-2 px-2 border-b">
+              <p>PRODUCT</p>
+              <p className="text-xl">+</p>
+            </div>
+            <div className="flex justify-between items-center py-2 px-2 border-b">
+              <p>PAGES</p>
+              <p className="text-xl">+</p>
+            </div>
+            <div className="flex justify-between items-center py-2 px-2 border-b">
+              <p>BLOG</p>
+              <p className="text-xl">+</p>
+            </div>
+            <div className="py-2 px-2">
+              <p className="font-bold">BUY NOW!</p>
+            </div>
+          </div>
+        )}
 
         <div>
           <Link to="/">

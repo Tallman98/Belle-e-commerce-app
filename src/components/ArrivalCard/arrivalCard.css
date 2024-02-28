@@ -1,0 +1,11 @@
+.second-img {
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+}
+
+.img-wrapper:hover .second-img {
+    visibility: visible;
+    pointer-events: auto;
+}

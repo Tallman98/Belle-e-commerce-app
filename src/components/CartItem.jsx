@@ -11,12 +11,12 @@ const CartItem = ({ id, name, image, color, size, price, quantity, total }) => {
   const [isDisabled, setIsDisabled] = useState(false);
   const dispatch = useDispatch();
   return (
-    <div className="grid grid-cols-6 py-2 border-b items-center px-2 w-full">
+    <div className="grid grid-cols-7 py-2 border-b items-center px-2 w-full">
       <div className="w-[100px]">
         <img src={image} alt={id} className="w-full" />
       </div>
 
-      <div>
+      <div className="col-span-2 md:pl-4 ml-10 md:ml-0">
         <p>{name}</p>
         <p className="text-[#787777] text-[10px] font-[400]">Color: {color}</p>
         <p className="text-[#787777] text-[10px] font-[400]">Size: {size}</p>

@@ -6,12 +6,10 @@ import { useNavigate } from "react-router-dom";
 
 const WishlistItem = ({ image, product, price, status, id, color, size }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const itemToAdd = () => {
     dispatch(addToCart({ image, name: product, price, id, color, size }));
     dispatch(removeWishlistItem(id));
-    navigate("/cart");
   };
 
   return (
@@ -30,8 +28,11 @@ const WishlistItem = ({ image, product, price, status, id, color, size }) => {
         ${price.toFixed(2)}
       </div>
       <div className="border flex justify-center items-center">{status}</div>
-      <div className="border flex justify-center items-center">
-        <button className="bg-black text-white py-2 px-4 " onClick={itemToAdd}>
+      <div className="border flex justify-center items-center px-1">
+        <button
+          className="bg-black text-white md:py-2 md:px-4 "
+          onClick={itemToAdd}
+        >
           ADD TO CART
         </button>
       </div>
